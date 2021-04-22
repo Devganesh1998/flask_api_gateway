@@ -1,0 +1,38 @@
+version: '3.7'
+services:
+    user_service:
+        build:
+            context: ./api_pkg/services/user
+            dockerfile: Dockerfile
+        volumes:
+            - ./api_pkg/services/user:/app
+        command: flask_app.py
+    show_service:
+        build:
+            context: ./api_pkg/services/show
+            dockerfile: Dockerfile
+        volumes:
+            - ./api_pkg/services/show:/app
+        command: flask_app.py
+    product_service:
+        build:
+            context: ./api_pkg/services/product
+            dockerfile: Dockerfile
+        volumes:
+            - ./api_pkg/services/product:/app
+        command: flask_app.py
+    gateway:
+        build: 
+            context: .
+            dockerfile: Dockerfile
+        ports: 
+            - '5000:5000'
+        depends_on: 
+            - product_service
+            - user_service
+            - show_service
+        environment: 
+            GATEWAY_APP_CONFIG: routes.cfg
+        volumes: 
+            - .:/app
+        command: api_pkg/gateway.py
