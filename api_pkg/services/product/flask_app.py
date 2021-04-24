@@ -1,6 +1,7 @@
 from flask import Flask, request,make_response
 from flask_cors import CORS
 import json
+import traceback 
 
 app = Flask(__name__)
 CORS(app)
@@ -13,9 +14,18 @@ def hello():
 
 @app.route("/file", methods=['POST'])
 def getFile():
-    response = make_response(request.get_data())
-    response.headers = request.headers
-    return response
+    try:
+        response = make_response(request.get_data())
+        customHeader = {}
+        for key, value in request.headers:
+            customHeader[key] = request.headers.get(key)
+        response.headers = customHeader
+        response.headers['Access-Control-Allow-Origin'] = '*'
+        return response
+    except Exception as err:
+        print(err)
+        traceback.print_exc()
+        return ({ 'err': str(err)})
 
 @app.route("/lists", methods=['GET'])
 def show_list():
