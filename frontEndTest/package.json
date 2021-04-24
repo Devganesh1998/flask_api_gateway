@@ -17,6 +17,7 @@
   "license": "ISC",
   "dependencies": {
     "copy-webpack-plugin": "^8.1.1",
+    "file-saver": "^2.0.5",
     "serve": "^11.3.2",
     "webpack": "^5.35.1",
     "webpack-cli": "^4.6.0"
