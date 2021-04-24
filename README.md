@@ -29,3 +29,21 @@ Python modules:
 5. Begin making HTTP Requests to the API.
 6. Checkout api_pkg/services to add or alter services.
 
+
+#### To test file transfer
+1. Make sure the port `5000` is free in your machine and run the command
+    ```bash
+    docker-compose up
+    ```
+2. Open a new terminal and run the following commands.
+    ```bash
+    cd frontEndTest/
+    yarn dev
+    ```
+3. Open an another new terminal and run the following commands.
+    ```bash
+    cd frontEndTest/
+    yarn serve
+    ```
+4. Now open browser with this following link - [http://localhost:5006/](http://localhost:5006/)
+5. You can select a file by clicking on `choose file` button and then after selecting a file, you can upload the selected file to product service by clicking the `upload` button (this button hits this endpoint `/api/v1/products/file` and receives the sent file as response). To save/download the uploaded file to your system click on the `download` button.
