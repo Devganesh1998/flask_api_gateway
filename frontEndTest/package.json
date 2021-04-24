@@ -1,0 +1,24 @@
+{
+  "name": "frontEndTest",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dev": "rm -rf dist; NODE_ENV=development webpack --config ./webpack.config.js -w",
+    "build": "rm -rf dist; NODE_ENV=production webpack --config ./webpack.config.js",
+    "serve": "serve dist -l 5006"
+  },
+  "keywords": [],
+  "author": {
+    "name": "Dev Ganesh",
+    "email": "devganesh91@gmail.com",
+    "url": "https://github.com/devganesh1998"
+  },
+  "license": "ISC",
+  "dependencies": {
+    "copy-webpack-plugin": "^8.1.1",
+    "serve": "^11.3.2",
+    "webpack": "^5.35.1",
+    "webpack-cli": "^4.6.0"
+  }
+}
